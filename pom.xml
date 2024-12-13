@@ -4,8 +4,8 @@
   <artifactId>HelloWorld</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-     <maven.compiler.source>17</maven.compiler.source>
-     <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
 </properties>
 <build>
   <plugins>
@@ -24,14 +24,17 @@
         </archive>
       </configuration>
     </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <warName>nano</warName>
+        </configuration>
+      </plugin>
   </plugins>
 </build>
   <packaging>war</packaging>
-  <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>jakarta.servlet</groupId>
@@ -52,17 +55,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-    <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.4.0</version>
-        <configuration>
-          <warName>nano</warName>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
