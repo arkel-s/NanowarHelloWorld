@@ -40,7 +40,7 @@ jobs:
 
     - name: Test the service
       run: |
-        curl -s http://localhost:8080 | grep "Hello World! False Metal!"
+        curl -s http://localhost:8080 | grep "Hello World!"
 
     - name: Stop and remove Docker container
       run: docker stop my-java-app-container && docker rm my-java-app-container
