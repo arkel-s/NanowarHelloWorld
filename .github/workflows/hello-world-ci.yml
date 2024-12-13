@@ -13,7 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -34,8 +33,17 @@ jobs:
       run: docker build -t my-java-app .
 
     - name: Run Docker container
-      run: docker run --rm my-java-app
+      run: docker run -d -p 8080:8080 --name my-java-app-container my-java-app
+
+    - name: Wait for the service to be available
+      run: sleep 10
+
+    - name: Test the service
+      run: |
+        curl -s http://localhost:8080 | grep "Hello World!"
+
+    - name: Stop and remove Docker container
+      run: docker stop my-java-app-container && docker rm my-java-app-container
 
     - name: Clean up Docker
-      run: |
-        docker rmi my-java-app
+      run: docker rmi my-java-app
